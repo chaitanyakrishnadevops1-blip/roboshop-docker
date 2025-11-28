@@ -4,9 +4,8 @@ WORKDIR /opt/server
 
 COPY payment.ini .
 COPY *.py .
-COPY requirement.txt .
-
-RUN pip3 install -r requirement.txt 
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt 
 
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
