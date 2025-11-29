@@ -1,13 +1,14 @@
 services:
+  catalogue:
+    image: catalogue:v1 
+    container_name: catalogue 
+    depends_on:
+    - mongodb
   mongodb:
     image: mongodb:v1
     container_name: mongodb
-    ports:
-      - "27017:27017"
-    networks:
-      - roboshop
-
 networks:
-  roboshop:
+  default:
     driver: bridge
-
+    name: roboshop
+    external: false # true if you have created network manually using docker network command
