@@ -18,8 +18,9 @@ services:
      image: rabbitmq:3
      container_name: rabbitmq
      environment:
-      RABBITMQ_DEFAULT_USER: roboshop
-      RABBITMQ_DEFAULT_PASS: roboshop123
+       RABBITMQ_DEFAULT_USER: roboshop
+       RABBITMQ_DEFAULT_PASS: roboshop
+ 
   user:
      image: user:v1 
      container_name: user
@@ -61,6 +62,8 @@ networks:
     driver: bridge
     name: roboshop
     external: false   # change to true ONLY if network already created manually
+
+
 
 
 
