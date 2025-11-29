@@ -7,12 +7,11 @@ services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
-  networks:
-   default:
-     name: roboshop
-     external: true
-
-     external: false # true if you have created network manually using docker network command
+networks:
+ default:
+   driver:bridge
+   name: roboshop
+   external: false # true if you have created network manually using docker network command
 
 
 
