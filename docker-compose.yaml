@@ -68,9 +68,16 @@ services:
       - payment
 
 networks:
-  default:
+  roboshop:
     name: roboshop
-    driver: bridge
+    external: false
+
+
+
+
+
+
+
 
 
 
