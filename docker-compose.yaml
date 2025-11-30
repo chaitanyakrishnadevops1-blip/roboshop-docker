@@ -2,7 +2,10 @@ version: "3.8"
 
 services:
   catalogue:
-    image: catalogue:v1
+    build:
+    context: ./catalogue
+    dockerfile: Dockerfile
+    image: joindevops/catalogue:v1
     container_name: catalogue
     depends_on:
       - mongodb
@@ -10,7 +13,8 @@ services:
       - roboshop
 
   mongodb:
-    image: mongodb:v1
+    build: ./mongodb
+    image: joindevops/mongodb:v1
     container_name: mongodb
     volumes:
       - mongodb:/data/db
@@ -18,7 +22,7 @@ services:
       - roboshop
 
   redis:
-    image: redis:7.0
+    image: /redis:7.0
     container_name: redis
     volumes: 
       - redis:/data
@@ -26,7 +30,8 @@ services:
       - roboshop
 
   mysql:
-    image: mysql:v1
+    build: ./mysql
+    image: joindevops/mysql:v1
     container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
@@ -45,7 +50,8 @@ services:
       - roboshop
 
   user:
-    image: user:v1
+    build: ./user
+    image: joindevops/user:v1
     container_name: user
     depends_on:
       - mongodb
@@ -54,7 +60,8 @@ services:
       - roboshop
 
   cart:
-    image: cart:v1
+    build: ./cart
+    image: joindevops/cart:v1
     container_name: cart
     depends_on:
       - redis
@@ -63,7 +70,8 @@ services:
       - roboshop
 
   shipping:
-    image: shipping:v1
+    build: ./shipping
+    image: joindevops/shipping:v1
     container_name: shipping
     depends_on:
       - mysql
@@ -72,7 +80,8 @@ services:
       - roboshop
 
   payment:
-    image: payment:v1
+    build: ./payment
+    image: joindevops/payment:v1
     container_name: payment
     depends_on:
       - rabbitmq
@@ -82,7 +91,8 @@ services:
       - roboshop
 
   frontend:
-    image: frontend:v1
+    build: ./frontend
+    image: joindevops/frontend:v1
     container_name: frontend
     ports:
       - "80:80"
