@@ -8,7 +8,9 @@ COPY *.js .
 RUN npm install
 
 FROM node:20.19.5-alpine3.22
+WORKDIR addgroup -S roboshop && adduser -S roboshop -G roboshop
 WORKDIR /opt/server
+USER roboshop
 
 COPY --from=build /opt/server /opt/server
 
