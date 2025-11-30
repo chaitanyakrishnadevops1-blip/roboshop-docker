@@ -5,23 +5,32 @@ services:
     image: catalogue:v1
     container_name: catalogue
     depends_on:
-      - mongodb
+    - mongodb
 
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+    - mongodb:/data/db
 
   redis:
     image: redis:7.0
     container_name: redis
+    volumes: 
+    - redis:/data
 
   mysql:
     image: mysql:v1
     container_name: mysql
+    volumes:
+    - mysql:/var/lib/mysql
 
   rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
+    volumes: # -v  rabbitmq:/var/lib/rabbitmq
+    - rabbitmq:/var/lib/rabbitmq
+     
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop
@@ -71,6 +80,12 @@ networks:
   roboshop:
     name: roboshop
     external: false
+volumes:
+mongodb: #docker volume create mongodb 
+redis:
+mysql:
+rabbitmq:
+
 
 
 
