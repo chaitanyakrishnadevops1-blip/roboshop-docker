@@ -3,7 +3,7 @@ FROM node:20.19.5-alpine3.22
 WORKDIR /opt/server
 
 COPY package.json .
-copy *.js .
+COPY *.js .
  # this may add extra cache memory
 RUN npm install
 
