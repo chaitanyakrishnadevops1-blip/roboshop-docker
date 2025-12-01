@@ -3,14 +3,15 @@ version: "3.8"
 services:
   catalogue:
     build:
-    context: ./catalogue
-    dockerfile: Dockerfile
+      context: ./catalogue
+      dockerfile: Dockerfile
     image: joindevops/catalogue:v1
     container_name: catalogue
     depends_on:
       - mongodb
     networks:
       - roboshop
+
 
   mongodb:
     build: ./mongodb
@@ -117,7 +118,7 @@ volumes:
   rabbitmq:
 
 
-  
+
 
 
 
