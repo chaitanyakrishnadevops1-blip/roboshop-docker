@@ -20,7 +20,7 @@ RUN chown -R roboshop:roboshop /opt/server
 USER roboshop
 
 CMD [ "server.js"]
-ENTRUPOINT["node"]
+ENTRYPOINT ["node"]
 
 
 # FROM node:20
