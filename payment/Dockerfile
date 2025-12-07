@@ -24,6 +24,7 @@ ENV CART_HOST="cart" \
 # ✔ FIXED LINE — correct --from syntax
 COPY --from=builder --chown=roboshop:roboshop /install /usr/local/bin
 
+
 COPY --chown=roboshop:roboshop payment.ini *.py requirements.txt .
 USER roboshop
 
