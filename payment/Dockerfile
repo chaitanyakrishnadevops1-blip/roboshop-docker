@@ -1,4 +1,4 @@
--------- Builder Stage --------
+# -------- Builder Stage --------
 FROM python:3.9 AS builder
 WORKDIR /opt/server
 
@@ -21,12 +21,12 @@ ENV CART_HOST="cart" \
     AMQP_USER="roboshop" \
     AMQP_PASS="roboshop123"
 
-# ✔ FIXED LINE — correct --from syntax
 COPY --from=builder --chown=roboshop:roboshop /install /usr/local/bin
 COPY --chown=roboshop:roboshop payment.ini *.py requirements.txt .
 USER roboshop
 
 CMD ["uwsgi", "--ini", "payment.ini"]
+
 
 
 
