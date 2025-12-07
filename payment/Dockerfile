@@ -1,4 +1,4 @@
-# -------- Builder Stage --------
+-------- Builder Stage --------
 FROM python:3.9 AS builder
 WORKDIR /opt/server
 
